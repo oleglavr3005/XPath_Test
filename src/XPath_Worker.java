@@ -34,7 +34,7 @@ public class XPath_Worker {
 			// Create XPath object
 			XPath xpath = xpathFactory.newXPath();
 
-			String name = getEmployeeNameById(doc, xpath, 4);
+			String name = getAuthorNameById(doc, xpath, "myfave");
 			System.out.println("Employee Name with ID 4: " + name);
 
 			List<String> names = getEmployeeNameWithAge(doc, xpath, 30);
@@ -77,11 +77,12 @@ public class XPath_Worker {
 		return list;
 	}
 
-	private static String getEmployeeNameById(Document doc, XPath xpath, int id) {
+	private static String getAuthorNameById(Document doc, XPath xpath, String id) {
 		String name = null;
 		try {
-			XPathExpression expr = xpath.compile("/Employees/Employee[@id='" + id + "']/name/text()");
-			name = (String) expr.evaluate(doc, XPathConstants.STRING);
+			XPathExpression expr0 = xpath.compile("//book[@id=\"" + id + "\"]/author/first-name/text()");
+			XPathExpression expr1 = xpath.compile("//book[@id=\"" + id + "\"]/author/last-name/text()");
+			name = (String) expr0.evaluate(doc, XPathConstants.STRING)+" "+(String) expr1.evaluate(doc, XPathConstants.STRING);
 		} catch (XPathExpressionException e) {
 			e.printStackTrace();
 		}
