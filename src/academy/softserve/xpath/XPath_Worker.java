@@ -30,7 +30,6 @@ public class XPath_Worker {
 	static List<String> queries;
 
 	public static void main(String[] args) throws TransformerException {
-		// TODO Auto-generated method stub
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);
 		DocumentBuilder builder;
@@ -45,6 +44,7 @@ public class XPath_Worker {
 			// Create XPath object
 			XPath xpath = xpathFactory.newXPath();
 
+			//my tests
 			String name = getAuthorNameById(doc, xpath, "myfave");
 			System.out.println("Author of book with id \"fave\": " + name);
 
@@ -54,6 +54,7 @@ public class XPath_Worker {
 			List<String> femaleEmps = getMagazineStyles(doc, xpath);
 			System.out.println("Styles of magazines:" + Arrays.toString(femaleEmps.toArray()));
 			
+			//queries from msdn
 			createListOfQueries() ;
 			executeListOfQueries(doc,xpath);
 			
