@@ -118,6 +118,7 @@ public class XPath_Worker {
 		queries.add("//book/*/last-name");
 		queries.add("//*/*");
 		queries.add("//*[@specialty]");
+		queries.add("//price/@exchange");
 	}
 	private static void executeListOfQueries(Document doc, XPath xpath) throws TransformerException {
 		for(String query : queries)
